@@ -1,12 +1,13 @@
 # Deployment Guide for MapCombiner
 
-This guide explains how to deploy MapCombiner to your AWS server at `mapcombiner.travel-tracker.org`.
+This guide explains how to deploy MapCombiner to your AWS server at `mapcombiner.travel-tracker.org` using PM2 on port 3003.
 
 ## Prerequisites
 
 - SSH access to your AWS server.
 - Node.js installed on the server (v18+ recommended).
 - Nginx installed and running.
+- PM2 installed globally (`npm install -g pm2`).
 
 ## 1. Prepare the Server
 
@@ -15,7 +16,7 @@ Connect to your server:
 ssh user@your-aws-ip
 ```
 
-Navigate to your web apps directory (e.g., `/var/www` or `~/apps`):
+Navigate to your web apps directory:
 ```bash
 cd ~/apps
 ```
@@ -40,48 +41,54 @@ Build the static application:
 npm run build
 ```
 
-This will create a `dist` directory containing the production files.
+## 4. Start with PM2 (Port 3003)
 
-## 4. Configure Nginx
+Start the application server using the provided ecosystem config:
+```bash
+pm2 start ecosystem.config.js
+pm2 save
+```
 
-Since this is a static Vite application, we will serve the `dist` folder directly using Nginx (no PM2 required).
+This will run `vite preview` on port **3003**.
+
+## 5. Configure Nginx
 
 Create a new Nginx configuration file:
 ```bash
-sudo nano /etc/nginx/sites-available/mapcombiner.travel-tracker.org
+sudo nano /etc/nginx/sites-available/map-combiner
 ```
 
-Paste the following configuration (update the `root` path to match your actual path):
+Paste the following configuration:
 
 ```nginx
 server {
     server_name mapcombiner.travel-tracker.org;
 
-    # POINT THIS TO YOUR DIST FOLDER
-    root /home/ubuntu/apps/map-combiner/dist; 
-    index index.html;
-
     location / {
-        try_files $uri $uri/ /index.html;
+        proxy_pass http://localhost:3003; # Forward to the PM2 port
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection 'upgrade';
+        proxy_set_header Host $host;
+        proxy_cache_bypass $http_upgrade;
     }
 }
 ```
-*Note: If your user is not `ubuntu` or your apps are in a different path, update the `root` directive accordingly.*
 
 Enable the site:
 ```bash
-sudo ln -s /etc/nginx/sites-available/mapcombiner.travel-tracker.org /etc/nginx/sites-enabled/
+sudo ln -s /etc/nginx/sites-available/map-combiner /etc/nginx/sites-enabled/
 sudo nginx -t
 sudo systemctl reload nginx
 ```
 
-## 5. SSL Configuration (HTTPS)
+## 6. SSL Configuration (HTTPS)
 
 If you have Certbot installed:
 ```bash
 sudo certbot --nginx -d mapcombiner.travel-tracker.org
 ```
 
-## 6. DNS
+## 7. DNS
 
-Ensure you have created a valid DNS record (A Record or CNAME) for `mapcombiner` in your `travel-tracker.org` DNS settings pointing to your AWS server IP.
+Ensure you have created a valid DNS record (A record or CNAME) for `mapcombiner` in your `travel-tracker.org` domain pointing to your AWS server's IP address.
