@@ -58,7 +58,7 @@ function App() {
     <div className="app-container">
       <header>
         <h1>
-          <img src="/logo.svg" alt="App Logo" style={{ display: 'inline-block', verticalAlign: 'bottom', marginRight: '10px', height: '48px', width: '48px' }} />
+          <img src="/logo.svg" alt="MapCombiner Logo" style={{ display: 'inline-block', verticalAlign: 'bottom', marginRight: '10px', height: '48px', width: '48px' }} />
           Map Combiner
         </h1>
         <p style={{ fontSize: '1.2rem', color: '#d4d4d8', marginBottom: '2rem' }}>

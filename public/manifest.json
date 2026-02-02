@@ -1,0 +1,21 @@
+{
+    "name": "MapCombiner",
+    "short_name": "MapCombiner",
+    "description": "Bypass the Google Maps 10-stop limit by combining multiple route URLs into a single seamless journey.",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#0f0f13",
+    "theme_color": "#27272a",
+    "icons": [
+        {
+            "src": "/logo.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        },
+        {
+            "src": "/logo.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        }
+    ]
+}
