@@ -92,3 +92,17 @@ sudo certbot --nginx -d mapcombiner.travel-tracker.org
 ## 7. DNS
 
 Ensure you have created a valid DNS record (A record or CNAME) for `mapcombiner` in your `travel-tracker.org` domain pointing to your AWS server's IP address.
+
+## Troubleshooting
+
+### "Blocked request" Error
+If you see a "Blocked request" error, it means the hostname isn't allowed. We have fixed this in `vite.config.js`. To apply the fix:
+
+1. Pull the latest changes:
+   ```bash
+   git pull
+   ```
+2. Restart the PM2 process:
+   ```bash
+   pm2 restart map-combiner
+   ```
