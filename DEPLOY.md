@@ -45,7 +45,7 @@ npm run build
 
 Start the application server using the provided ecosystem config:
 ```bash
-pm2 start ecosystem.config.js
+pm2 start ecosystem.config.cjs
 pm2 save
 ```
 
