@@ -160,7 +160,7 @@ function App() {
                 <Copy size={16} /> {copied ? 'Copied!' : 'Copy Link'}
               </button>
               <a
-                href={`${import.meta.env.PROD ? 'https://mapparser.travel-tracker.org' : 'http://localhost:3000'}/?url=${encodeURIComponent(resultUrl)}`}
+                href={`${import.meta.env.PROD ? 'https://mapparser.travel-tracker.org' : 'http://localhost:3002'}/?url=${encodeURIComponent(resultUrl)}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="btn-secondary"
