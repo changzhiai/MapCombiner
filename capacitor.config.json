@@ -1,0 +1,12 @@
+{
+  "appId": "org.traveltracker.mapcombiner",
+  "appName": "Map Combiner",
+  "webDir": "dist",
+  "plugins": {
+    "StatusBar": {
+      "overlaysWebView": false,
+      "style": "LIGHT",
+      "backgroundColor": "#ffffff"
+    }
+  }
+}

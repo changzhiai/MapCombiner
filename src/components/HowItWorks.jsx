@@ -4,23 +4,23 @@ export default function HowItWorks() {
     const steps = [
         {
             icon: <MapPin size={24} style={{ color: '#a78bfa' }} />,
-            title: "Plan Your Legs",
-            desc: "Go to Google Maps and plan your trip. Since Maps has a 10-stop limit, break your long trip into multiple parts (e.g., Leg 1, Leg 2)."
+            title: "Plan Your Routes",
+            desc: "Go to Google Maps and plan your trip. Since Maps has a 10-stop limit, break your long trip into multiple parts (e.g. route 1, route 2)."
         },
         {
             icon: <MousePointerClick size={24} style={{ color: '#a78bfa' }} />,
             title: "Copy URLs",
-            desc: "Copy the URL for each leg of your trip from the browser address bar."
+            desc: "Copy the URL for each route of your trip from the browser address bar."
         },
         {
             icon: <Navigation size={24} style={{ color: '#a78bfa' }} />,
             title: "Paste & Combine",
-            desc: "Paste the URLs into the inputs above. Click '+' to add more legs. Hit 'Combine Routes' to merge them."
+            desc: "Paste the URLs into the inputs above. Click '+' to add more routes. Hit 'Combine Routes' to merge them."
         },
         {
             icon: <CheckCircle size={24} style={{ color: '#a78bfa' }} />,
             title: "Navigate",
-            desc: "Open the final combined link. You'll get a single continuous route with all your stops!"
+            desc: "Copy the final combined link. You'll get a single continuous route with all your stops! You can parse the link to get the route data via MapParser. You can also open the link in Google Maps to navigate."
         }
     ];
 

@@ -148,3 +148,23 @@ button {
   color: #71717a;
   margin-top: 4px;
 }
+
+@media (max-width: 600px) {
+  #root {
+    padding: 1rem 1rem;
+  }
+
+  .card {
+    padding: 1.5rem 0.8rem;
+  }
+
+  .hide-on-mobile {
+    display: none;
+  }
+}
+
+@media (max-width: 375px) {
+  .result-actions svg {
+    display: none;
+  }
+}

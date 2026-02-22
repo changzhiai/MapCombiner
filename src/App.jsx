@@ -1,13 +1,15 @@
 import { useState } from 'react'
-import { Map, Link as LinkIcon, Copy, ExternalLink, Plus, ArrowRight, Trash2 } from 'lucide-react'
+import { Map, Link as LinkIcon, Copy, ExternalLink, Plus, ArrowRight, Trash2, Wand2 } from 'lucide-react'
 import { combineMapUrls } from './utils/mapUtils'
 import HowItWorks from './components/HowItWorks'
+import PrivacyPolicy from './components/PrivacyPolicy'
 
 function App() {
   const [urls, setUrls] = useState(['', ''])
   const [resultUrl, setResultUrl] = useState('')
   const [error, setError] = useState('')
   const [copied, setCopied] = useState(false)
+  const [showPrivacy, setShowPrivacy] = useState(false)
 
   const updateUrl = (index, value) => {
     const newUrls = [...urls]
@@ -54,6 +56,10 @@ function App() {
     }
   }
 
+  if (showPrivacy) {
+    return <PrivacyPolicy onBack={() => setShowPrivacy(false)} />
+  }
+
   return (
     <div className="app-container">
       <header>
@@ -76,7 +82,7 @@ function App() {
                   <input
                     type="text"
                     id={`url-${index}`}
-                    placeholder="https://www.google.com/maps/dir/..."
+                    placeholder="e.g. maps.app.goo.gl/..."
                     value={url}
                     onChange={(e) => updateUrl(index, e.target.value)}
                   />
@@ -157,16 +163,16 @@ function App() {
 
             <div className="result-actions">
               <button className="btn-secondary" onClick={copyToClipboard}>
-                <Copy size={16} /> {copied ? 'Copied!' : 'Copy Link'}
+                <Copy size={16} /> {copied ? <span>Copied!</span> : <span>Copy<span className="hide-on-mobile"> Link</span></span>}
               </button>
               <a
-                href={`${import.meta.env.PROD ? 'https://mapparser.travel-tracker.org' : 'http://localhost:3002'}/?url=${encodeURIComponent(resultUrl)}`}
+                href={`${import.meta.env.VITE_PARSER_URL || 'https://mapparser.travel-tracker.org'}/?url=${encodeURIComponent(resultUrl)}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="btn-secondary"
                 style={{ textDecoration: 'none' }}
               >
-                Parse Link
+                <Wand2 size={16} /> <span>Parse<span className="hide-on-mobile"> Link</span></span>
               </a>
               <a
                 href={resultUrl}
@@ -175,7 +181,7 @@ function App() {
                 className="btn-secondary"
                 style={{ textDecoration: 'none', background: 'rgba(139, 92, 246, 0.2)', border: '1px solid rgba(139, 92, 246, 0.4)' }}
               >
-                Open in Maps <ExternalLink size={16} />
+                <ExternalLink size={16} /> <span>Open<span className="hide-on-mobile"> in Maps</span></span>
               </a>
             </div>
           </div>
@@ -183,6 +189,26 @@ function App() {
 
         <HowItWorks />
       </main>
+
+      <footer style={{ marginTop: '4rem', paddingBottom: '2rem', color: '#71717a' }}>
+        <p style={{ fontSize: '0.875rem' }}>
+          &copy; 2026 MapCombiner &bull;
+          <button
+            onClick={() => setShowPrivacy(true)}
+            style={{
+              background: 'none',
+              border: 'none',
+              color: '#8b5cf6',
+              cursor: 'pointer',
+              fontSize: '0.875rem',
+              marginLeft: '5px',
+              textDecoration: 'underline'
+            }}
+          >
+            Privacy Policy
+          </button>
+        </p>
+      </footer>
 
       <style>{`
         @keyframes fadeIn {
