@@ -9,13 +9,19 @@ function App() {
   const [resultUrl, setResultUrl] = useState('')
   const [error, setError] = useState('')
   const [copied, setCopied] = useState(false)
-  const [showPrivacy, setShowPrivacy] = useState(
-    window.location.pathname === '/privacy' || window.location.hash === '#/privacy'
-  )
+  const [page, setPage] = useState(() => {
+    const path = window.location.pathname || window.location.hash.replace('#', '');
+    if (path === '/privacy' || path === '#/privacy') return 'privacy';
+    if (path === '/how-to-work' || path === '#/how-to-work') return 'how-to-work';
+    return 'home';
+  })
 
   useEffect(() => {
     const handleLocationChange = () => {
-      setShowPrivacy(window.location.pathname === '/privacy' || window.location.hash === '#/privacy')
+      const path = window.location.pathname || window.location.hash.replace('#', '');
+      if (path === '/privacy' || path === '#/privacy') setPage('privacy');
+      else if (path === '/how-to-work' || path === '#/how-to-work') setPage('how-to-work');
+      else setPage('home');
     }
     window.addEventListener('popstate', handleLocationChange)
     window.addEventListener('hashchange', handleLocationChange)
@@ -25,14 +31,9 @@ function App() {
     }
   }, [])
 
-  const navigateToPrivacy = () => {
-    window.history.pushState({}, '', '/privacy')
-    setShowPrivacy(true)
-  }
-
-  const navigateToHome = () => {
-    window.history.pushState({}, '', '/')
-    setShowPrivacy(false)
+  const navigateTo = (path, pageName) => {
+    window.history.pushState({}, '', path)
+    setPage(pageName)
   }
 
   const updateUrl = (index, value) => {
@@ -80,8 +81,41 @@ function App() {
     }
   }
 
-  if (showPrivacy) {
-    return <PrivacyPolicy onBack={navigateToHome} />
+  if (page === 'privacy') {
+    return <PrivacyPolicy onBack={() => navigateTo('/', 'home')} />
+  }
+
+  if (page === 'how-to-work') {
+    return (
+      <div className="app-container">
+        <header>
+          <h1>How to Work</h1>
+          <p style={{ fontSize: '1.2rem', color: '#d4d4d8', marginBottom: '2rem' }}>
+            Learn how to use MapCombiner to merge your routes.
+          </p>
+        </header>
+        <main>
+          <HowItWorks />
+          <div style={{ display: 'flex', justifyContent: 'center', marginTop: '2rem' }}>
+            <button className="btn-secondary" onClick={() => navigateTo('/', 'home')}>
+              Back to Combiner
+            </button>
+          </div>
+        </main>
+        <footer style={{ marginTop: '4rem', paddingBottom: '2rem', color: '#71717a' }}>
+          <p style={{ fontSize: '0.875rem' }}>
+            &copy; 2026 MapCombiner &bull;
+            <a
+              href="/privacy"
+              onClick={(e) => { e.preventDefault(); navigateTo('/privacy', 'privacy'); }}
+              style={{ color: '#8b5cf6', marginLeft: '5px', textDecoration: 'underline' }}
+            >
+              Privacy Policy
+            </a>
+          </p>
+        </footer>
+      </div>
+    )
   }
 
   return (
@@ -217,20 +251,13 @@ function App() {
       <footer style={{ marginTop: '4rem', paddingBottom: '2rem', color: '#71717a' }}>
         <p style={{ fontSize: '0.875rem' }}>
           &copy; 2026 MapCombiner &bull;
-          <button
-            onClick={navigateToPrivacy}
-            style={{
-              background: 'none',
-              border: 'none',
-              color: '#8b5cf6',
-              cursor: 'pointer',
-              fontSize: '0.875rem',
-              marginLeft: '5px',
-              textDecoration: 'underline'
-            }}
+          <a
+            href="/privacy"
+            onClick={(e) => { e.preventDefault(); navigateTo('/privacy', 'privacy'); }}
+            style={{ color: '#8b5cf6', marginLeft: '5px', textDecoration: 'underline' }}
           >
             Privacy Policy
-          </button>
+          </a>
         </p>
       </footer>
 
