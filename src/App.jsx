@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Map, Link as LinkIcon, Copy, ExternalLink, Plus, ArrowRight, Trash2, Wand2 } from 'lucide-react'
 import { combineMapUrls } from './utils/mapUtils'
 import HowItWorks from './components/HowItWorks'
@@ -9,7 +9,31 @@ function App() {
   const [resultUrl, setResultUrl] = useState('')
   const [error, setError] = useState('')
   const [copied, setCopied] = useState(false)
-  const [showPrivacy, setShowPrivacy] = useState(false)
+  const [showPrivacy, setShowPrivacy] = useState(
+    window.location.pathname === '/privacy' || window.location.hash === '#/privacy'
+  )
+
+  useEffect(() => {
+    const handleLocationChange = () => {
+      setShowPrivacy(window.location.pathname === '/privacy' || window.location.hash === '#/privacy')
+    }
+    window.addEventListener('popstate', handleLocationChange)
+    window.addEventListener('hashchange', handleLocationChange)
+    return () => {
+      window.removeEventListener('popstate', handleLocationChange)
+      window.removeEventListener('hashchange', handleLocationChange)
+    }
+  }, [])
+
+  const navigateToPrivacy = () => {
+    window.history.pushState({}, '', '/privacy')
+    setShowPrivacy(true)
+  }
+
+  const navigateToHome = () => {
+    window.history.pushState({}, '', '/')
+    setShowPrivacy(false)
+  }
 
   const updateUrl = (index, value) => {
     const newUrls = [...urls]
@@ -57,7 +81,7 @@ function App() {
   }
 
   if (showPrivacy) {
-    return <PrivacyPolicy onBack={() => setShowPrivacy(false)} />
+    return <PrivacyPolicy onBack={navigateToHome} />
   }
 
   return (
@@ -194,7 +218,7 @@ function App() {
         <p style={{ fontSize: '0.875rem' }}>
           &copy; 2026 MapCombiner &bull;
           <button
-            onClick={() => setShowPrivacy(true)}
+            onClick={navigateToPrivacy}
             style={{
               background: 'none',
               border: 'none',
