@@ -1,8 +1,14 @@
 import { useState, useEffect } from 'react'
-import { Map, Link as LinkIcon, Copy, ExternalLink, Plus, ArrowRight, Trash2, Wand2 } from 'lucide-react'
+import { Map, Link as LinkIcon, Copy, ExternalLink, Plus, ArrowRight, Trash2, Wand2, Share2 } from 'lucide-react'
 import { combineMapUrls } from './utils/mapUtils'
 import HowItWorks from './components/HowItWorks'
 import PrivacyPolicy from './components/PrivacyPolicy'
+import History from './components/History'
+import Donate from './components/Donate'
+import DownloadApp from './components/DownloadApp'
+import BottomNav from './components/BottomNav'
+import Footer from './components/Footer'
+import { Share } from '@capacitor/share'
 
 function App() {
   const [urls, setUrls] = useState(['', ''])
@@ -12,7 +18,10 @@ function App() {
   const [page, setPage] = useState(() => {
     const path = window.location.pathname || window.location.hash.replace('#', '');
     if (path === '/privacy' || path === '#/privacy') return 'privacy';
-    if (path === '/how-to-work' || path === '#/how-to-work') return 'how-to-work';
+    if (path === '/about' || path === '#/about') return 'about';
+    if (path === '/history' || path === '#/history') return 'history';
+    if (path === '/donate' || path === '#/donate') return 'donate';
+    if (path === '/download' || path === '#/download') return 'download';
     return 'home';
   })
 
@@ -20,7 +29,10 @@ function App() {
     const handleLocationChange = () => {
       const path = window.location.pathname || window.location.hash.replace('#', '');
       if (path === '/privacy' || path === '#/privacy') setPage('privacy');
-      else if (path === '/how-to-work' || path === '#/how-to-work') setPage('how-to-work');
+      else if (path === '/about' || path === '#/about') setPage('about');
+      else if (path === '/history' || path === '#/history') setPage('history');
+      else if (path === '/donate' || path === '#/donate') setPage('donate');
+      else if (path === '/download' || path === '#/download') setPage('download');
       else setPage('home');
     }
     window.addEventListener('popstate', handleLocationChange)
@@ -34,6 +46,7 @@ function App() {
   const navigateTo = (path, pageName) => {
     window.history.pushState({}, '', path)
     setPage(pageName)
+    window.scrollTo(0, 0)
   }
 
   const updateUrl = (index, value) => {
@@ -70,8 +83,27 @@ function App() {
       return
     }
 
+
     setResultUrl(combined)
+
+    // Save to history
+    const savedHistory = JSON.parse(localStorage.getItem('mapCombinerHistory') || '[]')
+    const newHistory = [{ url: combined, timestamp: new Date().toISOString() }, ...savedHistory].slice(0, 20)
+    localStorage.setItem('mapCombinerHistory', JSON.stringify(newHistory))
   }
+
+  const handleShare = async () => {
+    try {
+      await Share.share({
+        title: 'Combined Map Route',
+        text: 'Check out this combined route on Google Maps!',
+        url: resultUrl,
+        dialogTitle: 'Share Route',
+      });
+    } catch (error) {
+      console.error('Error sharing', error);
+    }
+  };
 
   const copyToClipboard = () => {
     if (resultUrl) {
@@ -82,14 +114,50 @@ function App() {
   }
 
   if (page === 'privacy') {
-    return <PrivacyPolicy onBack={() => navigateTo('/', 'home')} />
+    return (
+      <div className="app-container">
+        <PrivacyPolicy onBack={() => navigateTo('/', 'home')} />
+        <Footer onNavigate={navigateTo} />
+        <BottomNav activePage={page} onNavigate={navigateTo} />
+      </div>
+    )
   }
 
-  if (page === 'how-to-work') {
+  if (page === 'history') {
+    return (
+      <div className="app-container">
+        <History onBack={() => navigateTo('/', 'home')} />
+        <Footer onNavigate={navigateTo} />
+        <BottomNav activePage={page} onNavigate={navigateTo} />
+      </div>
+    )
+  }
+
+  if (page === 'download') {
+    return (
+      <div className="app-container">
+        <DownloadApp onBack={() => navigateTo('/', 'home')} />
+        <Footer onNavigate={navigateTo} />
+        <BottomNav activePage={page} onNavigate={navigateTo} />
+      </div>
+    )
+  }
+
+  if (page === 'donate') {
+    return (
+      <div className="app-container">
+        <Donate onBack={() => navigateTo('/', 'home')} />
+        <Footer onNavigate={navigateTo} />
+        <BottomNav activePage={page} onNavigate={navigateTo} />
+      </div>
+    )
+  }
+
+  if (page === 'about') {
     return (
       <div className="app-container">
         <header>
-          <h1>How to Work</h1>
+          <h1>About</h1>
           <p style={{ fontSize: '1.2rem', color: '#d4d4d8', marginBottom: '2rem' }}>
             Learn how to use MapCombiner to merge your routes.
           </p>
@@ -98,22 +166,12 @@ function App() {
           <HowItWorks />
           <div style={{ display: 'flex', justifyContent: 'center', marginTop: '2rem' }}>
             <button className="btn-secondary" onClick={() => navigateTo('/', 'home')}>
-              Back to Combiner
+              Back to Home
             </button>
           </div>
         </main>
-        <footer style={{ marginTop: '4rem', paddingBottom: '2rem', color: '#71717a' }}>
-          <p style={{ fontSize: '0.875rem' }}>
-            &copy; 2026 MapCombiner &bull;
-            <a
-              href="/privacy"
-              onClick={(e) => { e.preventDefault(); navigateTo('/privacy', 'privacy'); }}
-              style={{ color: '#8b5cf6', marginLeft: '5px', textDecoration: 'underline' }}
-            >
-              Privacy Policy
-            </a>
-          </p>
-        </footer>
+        <Footer onNavigate={navigateTo} />
+        <BottomNav activePage={page} onNavigate={navigateTo} />
       </div>
     )
   }
@@ -140,7 +198,7 @@ function App() {
                   <input
                     type="text"
                     id={`url-${index}`}
-                    placeholder="e.g. maps.app.goo.gl/..."
+                    placeholder="e.g. www.google.com/maps/dir/..."
                     value={url}
                     onChange={(e) => updateUrl(index, e.target.value)}
                   />
@@ -220,6 +278,9 @@ function App() {
             </div>
 
             <div className="result-actions">
+              <button className="btn-secondary" onClick={handleShare}>
+                <Share2 size={16} /> <span>Share</span>
+              </button>
               <button className="btn-secondary" onClick={copyToClipboard}>
                 <Copy size={16} /> {copied ? <span>Copied!</span> : <span>Copy<span className="hide-on-mobile"> Link</span></span>}
               </button>
@@ -239,27 +300,20 @@ function App() {
                 className="btn-secondary"
                 style={{ textDecoration: 'none', background: 'rgba(139, 92, 246, 0.2)', border: '1px solid rgba(139, 92, 246, 0.4)' }}
               >
-                <ExternalLink size={16} /> <span>Open<span className="hide-on-mobile"> in Maps</span></span>
+                <ExternalLink size={16} /> <span>Open<span className="hide-on-mobile"> Maps</span></span>
               </a>
             </div>
           </div>
         )}
 
-        <HowItWorks />
+        <div className="hide-on-mobile">
+          <HowItWorks />
+        </div>
       </main>
 
-      <footer style={{ marginTop: '4rem', paddingBottom: '2rem', color: '#71717a' }}>
-        <p style={{ fontSize: '0.875rem' }}>
-          &copy; 2026 MapCombiner &bull;
-          <a
-            href="/privacy"
-            onClick={(e) => { e.preventDefault(); navigateTo('/privacy', 'privacy'); }}
-            style={{ color: '#8b5cf6', marginLeft: '5px', textDecoration: 'underline' }}
-          >
-            Privacy Policy
-          </a>
-        </p>
-      </footer>
+      <Footer onNavigate={navigateTo} />
+
+      <BottomNav activePage={page} onNavigate={navigateTo} />
 
       <style>{`
         @keyframes fadeIn {

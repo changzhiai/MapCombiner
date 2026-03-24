@@ -9,14 +9,6 @@ export default function PrivacyPolicy({ onBack }) {
     return (
         <div className="privacy-container" style={{ animation: 'fadeIn 0.5s' }}>
             <div className="card" style={{ maxWidth: '800px', textAlign: 'left' }}>
-                <button
-                    onClick={onBack}
-                    className="btn-secondary"
-                    style={{ marginBottom: '2rem', width: 'fit-content' }}
-                >
-                    <ArrowLeft size={18} /> Back to Maps
-                </button>
-
                 <h1 style={{ fontSize: '2.5rem', marginBottom: '1rem' }}>Privacy Policy</h1>
                 <p style={{ color: '#a1a1aa', marginBottom: '2rem' }}>Last Updated: February 22, 2026</p>
 
@@ -64,12 +56,11 @@ export default function PrivacyPolicy({ onBack }) {
                         If you have any questions about this Privacy Policy, you can reach out via the GitHub repository or contact the developer directly via email: <a href="mailto:changzhiai@gmail.com" className="text-indigo-600 hover:underline"> changzhiai@gmail.com</a>
                     </p>
                 </div>
-
-                <footer style={{ marginTop: '3rem', borderTop: '1px solid var(--glass-border)', paddingTop: '1.5rem', textAlign: 'center' }}>
-                    <p style={{ color: '#71717a', fontSize: '0.9rem' }}>
-                        MapCombiner is an open-source tool dedicated to enhancing your navigation experience.
-                    </p>
-                </footer>
+                <div style={{ display: 'flex', justifyContent: 'center', marginTop: '2rem' }}>
+                    <button className="btn-secondary" onClick={onBack}>
+                        Back to Home
+                    </button>
+                </div>
             </div>
         </div>
     );

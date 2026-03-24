@@ -26,7 +26,19 @@ export default function HowItWorks() {
 
     return (
         <div className="card" style={{ marginTop: '3rem', textAlign: 'left' }}>
-            <h2 style={{ fontSize: '1.5rem', marginBottom: '1.5rem', textAlign: 'center' }}>How to Use</h2>
+            <h3 style={{ fontSize: '1.2rem', marginBottom: '1.5rem', color: '#8b5cf6', textAlign: 'left' }}>About</h3>
+
+            <div style={{ marginBottom: '2.5rem', padding: '0 0.5rem' }}>
+                <p style={{ color: '#e4e4e7', fontSize: '1.05rem', lineHeight: '1.6', marginBottom: '1rem', textAlign: 'justify' }}>
+                    MapCombiner is a powerful utility designed to help travelers and road-trippers bypass the frustrating 10-stop limit in Google Maps. <br />
+                    <br />
+
+                    You are not allowed to add more than 10 stops in Google Maps. However, our tool MapCombiner allows you to merge multiple separate Google Maps routes into a single, continuous route with all your stops beyond the 10-stop limit.
+                </p>
+            </div>
+
+            <h3 style={{ fontSize: '1.2rem', marginBottom: '1.5rem', color: '#8b5cf6', textAlign: 'left' }}>How to Use</h3>
+
             <div className="steps-container">
                 {steps.map((step, index) => (
                     <div key={index} className="step-item" style={{ display: 'flex', gap: '1rem', marginBottom: '1.5rem' }}>
