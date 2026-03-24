@@ -1,16 +1,39 @@
 # MapCombiner
+[![Live Website](https://img.shields.io/badge/Live-Website-brightgreen)](https://mapcombiner.travel-tracker.org/)
+[![License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 
-MapCombiner is a tool that allows users to combine multiple Google Maps links into a single new link, bypassing the 10-stop limit.
+<img src="public/logo.png" width="200">
 
-Currently, two official plugins are available:
+MapCombiner is a tool that allows users to combine multiple Google Maps links into a single new link, bypassing the 10-stop limit. It is a totally free, open-source web application with native mobile apps available on both iOS and Android.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Main Page
 
-## React Compiler
+![Main Page](docs/figures/main_page.png)
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Access
+It can be accessed through web, iOS, Android
 
-## Expanding the ESLint configuration
+### 1. Web
+You can access the online website through [https://mapcombiner.travel-tracker.org/](https://mapcombiner.travel-tracker.org/)
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+### 2. Mobile App
+You can download the mobile app from the App Store and Google Play Store by scanning the QR code below:
+
+![App](docs/figures/Download_app.png)
+
+
+# Features
+
+- **Bypass Stop Limits**: Merge multiple Google Maps route URLs (10 stops each) into one continuous journey.
+- **Cross-Platform**: Unified experience across **Web, iOS, and Android** powered by Capacitor.
+- **Privacy-Centric**: All processing happens locally; no data ever leaves your device unless you share it.
+- **Route History**: Automatically remember your recently combined journeys with local persistence.
+- **Native Sharing**: Instant sharing of combined links through messaging apps or social media.
+- **QR Code Integration**: Quickly switch between desktop and mobile with easy-to-scan store links.
+- **Premium UI/UX**: Aesthetic dark-mode glassmorphism interface with smooth motion effects and transitions.
+- **Advanced Parsing**: Integrated with Travel Tracker's MapParser for deeper insights and alternate route processing.
+
+
+## Contact
+
+For questions, suggestions, or feedback, please contact maintainer: **changzhiai@gmail.com**
