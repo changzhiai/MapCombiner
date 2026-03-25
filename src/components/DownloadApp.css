@@ -31,7 +31,7 @@
 .header-section {
     display: flex;
     flex-direction: column;
-    items-center: center;
+    align-items: center;
     text-align: center;
     gap: 1.5rem;
     margin-bottom: 4rem;
