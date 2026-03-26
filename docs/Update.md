@@ -9,5 +9,6 @@ We are thrilled to bring the MapCombiner experience to mobile! Our first major r
 - **Enhanced Native Sharing**: Share your combined itineraries with travel partners or clients using the native system share dialog for faster collaboration.
 - **Support for MapParser**: Easily parse and analyze your route data via built-in integration with Travel Tracker's MapParser.
 - **Privacy & Speed**: Lightning-fast local processing with zero server-side tracking. Your route data stays on your device.
+- **Fix Bugs**: Fix some bugs.
 
 For more details and updates, visit: https://mapcombiner.travel-tracker.org/
