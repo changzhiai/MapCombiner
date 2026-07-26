@@ -110,20 +110,20 @@ export default function DownloadApp({ onBack }) {
                     <div className="info-section">
                         <div className="info-grid">
                             <div className="info-item">
-                                <h3 className="info-title">
+                                <h2 className="info-title">
                                     <Scan className="text-purple-400" /> &nbsp;
                                     How to Scan
-                                </h3>
+                                </h2>
                                 <p className="info-desc">
                                     Open your smartphone's camera app and point it at the QR code for your device.
                                     Tap the link that appears to visit the store page.
                                 </p>
                             </div>
                             <div className="info-item">
-                                <h3 className="info-title">
+                                <h2 className="info-title">
                                     <Smartphone className="text-indigo-400" /> &nbsp;
                                     Why Mobile?
-                                </h3>
+                                </h2>
                                 <p className="info-desc">
                                     Combine routes directly from Google Maps, persistent history,
                                     and native performance optimized for your device.
