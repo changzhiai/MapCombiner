@@ -14,7 +14,7 @@
   <meta name="description"
     content="Bypass the Google Maps 10-stop limit by combining multiple route URLs into a single seamless journey. Easy to use, free, and instant." />
   <meta name="keywords"
-    content="google maps, map combiner, merge maps, driving directions, multi-stop route, 10 stop limit, more than 10 stops, more than 10, more than 10 destinations" />
+    content="google maps, map combiner, merge maps, combine google maps routes, driving directions, multi-stop route, 10 stop limit, more than 10 stops, more than 10 destinations, google maps 10 waypoint limit, google maps workaround, combine multiple routes, road trip planner, multi destination route, google maps route merger, bypass google maps limit, unlimited stops google maps, long road trip google maps, merge driving directions, combine map links" />
   <meta name="author" content="MapCombiner by Changzhi Ai" />
   <meta name="creator" content="Changzhi Ai" />
   <meta name="theme-color" content="#27272a" />
@@ -22,10 +22,13 @@
   <!-- Open Graph / Facebook -->
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://mapcombiner.travel-tracker.org/" />
+  <meta property="og:site_name" content="MapCombiner" />
   <meta property="og:title" content="MapCombiner | Combine Multiple Google Maps Routes" />
   <meta property="og:description"
     content="Bypass the Google Maps 10-stop limit by combining multiple route URLs into a single journey. Download our mobile app for iOS and Android." />
-  <meta property="og:image" content="/og-image.png" />
+  <meta property="og:image" content="https://mapcombiner.travel-tracker.org/og-image.png" />
+  <meta property="og:image:width" content="1024" />
+  <meta property="og:image:height" content="1024" />
 
   <!-- Twitter -->
   <meta property="twitter:card" content="summary_large_image" />
@@ -33,9 +36,9 @@
   <meta property="twitter:title" content="MapCombiner | Combine Multiple Google Maps Routes" />
   <meta property="twitter:description"
     content="Bypass the Google Maps 10-stop limit by combining multiple route URLs into a single journey. Download our mobile app for iOS and Android." />
-  <meta property="twitter:image" content="/og-image.png" />
+  <meta property="twitter:image" content="https://mapcombiner.travel-tracker.org/og-image.png" />
 
-  <link rel="canonical" href="https://mapcombiner.travel-tracker.org/" />
+  <link rel="llms-txt" href="/llms.txt" />
 
   <script type="application/ld+json">
     {
@@ -57,19 +60,204 @@
       }
     }
   </script>
+
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "MapCombiner",
+      "url": "https://mapcombiner.travel-tracker.org/",
+      "description": "Combine multiple Google Maps routes into one link. Bypass the 10-stop limit for free.",
+      "applicationCategory": "UtilityApplication",
+      "operatingSystem": "iOS, Android, Web",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "5",
+        "ratingCount": "1"
+      },
+      "downloadUrl": "https://apps.apple.com/app/mapcombiner/id6744071387",
+      "installUrl": "https://play.google.com/store/apps/details?id=org.traveltracker.mapcombiner"
+    }
+  </script>
+
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How do I combine more than 10 stops in Google Maps?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Use MapCombiner at mapcombiner.travel-tracker.org. Paste your multiple Google Maps route URLs (each with up to 10 stops) and MapCombiner merges them into a single link with all stops combined, bypassing the 10-stop limit. It's free and works instantly."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is there a way to add more than 10 destinations in Google Maps?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. MapCombiner lets you bypass the Google Maps 10-stop limit. Create multiple routes in Google Maps (each with up to 10 stops), paste the URLs into MapCombiner, and get a single combined link with all your destinations."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the best free tool to combine Google Maps routes?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "MapCombiner is a free, open-source tool available on web, iOS, and Android. It combines multiple Google Maps route links into one, processes everything locally on your device for privacy, and requires no account or sign-up."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I merge multiple Google Maps links into one?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. MapCombiner merges multiple Google Maps direction URLs into a single combined route link. Just paste your route URLs, click combine, and share the result via link or QR code."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does MapCombiner work on mobile?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. MapCombiner is available as a free app on the iOS App Store and Google Play Store. You can also use it directly in your mobile browser at mapcombiner.travel-tracker.org."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is MapCombiner safe to use? Does it store my data?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, MapCombiner is safe. All route processing happens locally in your browser or on your device. Your data never leaves your device and is never sent to any server. No account is required."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How many routes can I combine with MapCombiner?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "There is no limit. You can paste as many Google Maps route URLs as you need, and MapCombiner will merge all the stops into a single combined route link."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does MapCombiner work with international Google Maps routes?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. MapCombiner works with Google Maps routes anywhere in the world — any country, any language, any location that Google Maps supports. It handles driving, walking, cycling, and transit directions."
+          }
+        }
+      ]
+    }
+  </script>
+
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "HowTo",
+      "name": "How to Combine More Than 10 Stops in Google Maps",
+      "description": "Use MapCombiner to bypass the Google Maps 10-stop limit by merging multiple route URLs into a single link.",
+      "totalTime": "PT1M",
+      "tool": {
+        "@type": "HowToTool",
+        "name": "MapCombiner"
+      },
+      "step": [
+        {
+          "@type": "HowToStep",
+          "position": 1,
+          "name": "Create your routes in Google Maps",
+          "text": "Plan your stops in Google Maps, splitting them into groups of up to 10 stops per route. Copy the URL for each route."
+        },
+        {
+          "@type": "HowToStep",
+          "position": 2,
+          "name": "Paste route URLs into MapCombiner",
+          "text": "Go to mapcombiner.travel-tracker.org and paste your Google Maps route URLs into the input fields."
+        },
+        {
+          "@type": "HowToStep",
+          "position": 3,
+          "name": "Click Combine",
+          "text": "Click the Combine button to merge all your routes into a single link with all stops included."
+        },
+        {
+          "@type": "HowToStep",
+          "position": 4,
+          "name": "Share your combined route",
+          "text": "Copy the combined link, share it via your device's share menu, or generate a QR code for others to scan."
+        }
+      ]
+    }
+  </script>
+
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://mapcombiner.travel-tracker.org/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Download App",
+          "item": "https://mapcombiner.travel-tracker.org/download"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "About",
+          "item": "https://mapcombiner.travel-tracker.org/about"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "Privacy Policy",
+          "item": "https://mapcombiner.travel-tracker.org/privacy"
+        }
+      ]
+    }
+  </script>
+
+  <!-- Smart App Banner for iOS Safari -->
+  <meta name="apple-itunes-app" content="app-id=6744071387" />
 </head>
 
 <body>
   <div id="root"></div>
-  <!-- SEO Internal Links -->
-  <nav style="display:none;">
-    <a href="/">Home</a>
-    <a href="/about">About</a>
-    <a href="/history">History</a>
-    <a href="/privacy">Privacy Policy</a>
-    <a href="/donate">Donate</a>
-    <a href="/download">Download App</a>
-  </nav>
+  <!-- SEO Content for Crawlers -->
+  <noscript>
+    <main>
+      <h1>MapCombiner — Combine Multiple Google Maps Routes Into One Link</h1>
+      <p>MapCombiner is a free tool that lets you bypass the Google Maps 10-stop limit. Paste multiple Google Maps route URLs and get a single combined link with all your stops merged into one journey.</p>
+      <h2>How It Works</h2>
+      <p>1. Create your routes in Google Maps (up to 10 stops each). 2. Copy each route URL. 3. Paste them into MapCombiner. 4. Get one combined link with all your destinations.</p>
+      <h2>Key Features</h2>
+      <ul>
+        <li>Combine unlimited Google Maps route URLs into one link</li>
+        <li>Works with driving, walking, cycling, and transit directions</li>
+        <li>All processing done locally — your routes never leave your device</li>
+        <li>No account required — free, instant, and private</li>
+        <li>Share via link, QR code, or native share</li>
+        <li>Available on web, iOS, and Android</li>
+      </ul>
+      <h2>Download the Free App</h2>
+      <p><a href="https://apps.apple.com/app/mapcombiner/id6744071387">Download MapCombiner for iOS</a></p>
+      <p><a href="https://play.google.com/store/apps/details?id=org.traveltracker.mapcombiner">Download MapCombiner for Android</a></p>
+    </main>
+  </noscript>
   <script type="module" src="/src/main.jsx"></script>
 </body>
 

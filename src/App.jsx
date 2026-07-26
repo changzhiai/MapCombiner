@@ -9,6 +9,8 @@ import DownloadApp from './components/DownloadApp'
 import BottomNav from './components/BottomNav'
 import Footer from './components/Footer'
 import { Share } from '@capacitor/share'
+import useDocumentMeta from './hooks/useDocumentMeta'
+import { ROUTE_META } from './seo/routeMeta'
 
 function App() {
   const [urls, setUrls] = useState(['', ''])
@@ -24,6 +26,8 @@ function App() {
     if (path === '/download' || path === '#/download') return 'download';
     return 'home';
   })
+
+  useDocumentMeta(ROUTE_META[page])
 
   useEffect(() => {
     const handleLocationChange = () => {

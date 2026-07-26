@@ -53,7 +53,7 @@ export default function PrivacyPolicy({ onBack }) {
                         <h2 style={{ margin: 0, fontSize: '1.5rem' }}>Contact</h2>
                     </div>
                     <p style={{ color: '#d4d4d8', lineHeight: '1.6' }}>
-                        If you have any questions about this Privacy Policy, you can reach out via the GitHub repository or contact the developer directly via email: <a href="mailto:changzhiai@gmail.com" className="text-indigo-600 hover:underline"> changzhiai@gmail.com</a>
+                        If you have any questions about this Privacy Policy, you can reach out via the GitHub repository or contact the developer directly via email: <a href="mailto:mapcombiner@travel-tracker.org" className="text-indigo-600 hover:underline"> mapcombiner@travel-tracker.org</a>
                     </p>
                 </div>
                 <div style={{ display: 'flex', justifyContent: 'center', marginTop: '2rem' }}>

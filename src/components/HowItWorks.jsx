@@ -26,7 +26,7 @@ export default function HowItWorks() {
 
     return (
         <div className="card" style={{ marginTop: '3rem', textAlign: 'left' }}>
-            <h3 style={{ fontSize: '1.2rem', marginBottom: '1.5rem', color: '#8b5cf6', textAlign: 'left' }}>About</h3>
+            <h2 style={{ fontSize: '1.2rem', marginBottom: '1.5rem', color: '#8b5cf6', textAlign: 'left' }}>About</h2>
 
             <div style={{ marginBottom: '2.5rem', padding: '0 0.5rem' }}>
                 <p style={{ color: '#e4e4e7', fontSize: '1.05rem', lineHeight: '1.6', marginBottom: '1rem', textAlign: 'justify' }}>
@@ -37,7 +37,7 @@ export default function HowItWorks() {
                 </p>
             </div>
 
-            <h3 style={{ fontSize: '1.2rem', marginBottom: '1.5rem', color: '#8b5cf6', textAlign: 'left' }}>How to Use</h3>
+            <h2 style={{ fontSize: '1.2rem', marginBottom: '1.5rem', color: '#8b5cf6', textAlign: 'left' }}>How to Use</h2>
 
             <div className="steps-container">
                 {steps.map((step, index) => (
