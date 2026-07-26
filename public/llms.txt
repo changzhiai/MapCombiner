@@ -35,7 +35,7 @@ MapCombiner solves the problem of Google Maps only allowing 10 stops per route. 
 - iOS App: https://apps.apple.com/app/mapcombiner/id6744071387
 - Google Play: https://play.google.com/store/apps/details?id=org.traveltracker.mapcombiner
 - GitHub: https://github.com/changzhiai/MapCombiner
-- Contact: changzhiai@gmail.com
+- Contact: mapcombiner@travel-tracker.org
 
 ## FAQ
 
