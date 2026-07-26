@@ -30,3 +30,4 @@ User-agent: Applebot-Extended
 Allow: /
 
 Sitemap: https://mapcombiner.travel-tracker.org/sitemap.xml
+IndexNow: https://mapcombiner.travel-tracker.org/02e0fdc8a6e04712b4af51a05d173281.txt
