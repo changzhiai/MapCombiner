@@ -1,3 +1,32 @@
 User-agent: *
 Allow: /
+Allow: /download
+Allow: /about
+Allow: /history
+Allow: /privacy
+Allow: /donate
+Disallow:
+
+# AI / LLM crawlers — welcome
+User-agent: GPTBot
+Allow: /
+Crawl-delay: 2
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: CCBot
+Allow: /
+Crawl-delay: 5
+
+User-agent: Bytespider
+Allow: /
+Crawl-delay: 5
+
+User-agent: Applebot-Extended
+Allow: /
+
 Sitemap: https://mapcombiner.travel-tracker.org/sitemap.xml
